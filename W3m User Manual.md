@@ -15,7 +15,7 @@
 This document is not the official user manual for w3m. Instead, it is the result of collected information over the internet and from the source code. This is the case for now, until the maintainers of w3m give this document a look.
 ## Motives
 *This section will be removed since it's not relevant*  
-On the [Old README file](/doc/doc-old/doc-en/README) they pointed out in the *Current problems are* section that their online manuals are poor. Personally w3m saved me a couple of times when I had limited bandwidth or I didn't have enough money to by mobile data. And when I started reading the source code and looking online, there were a couple of things that I wished I knew when I needed them. That's why I'm creating this document.
+On the [Old w3m README file](https://github.com/tats/w3m/blob/master/doc/README#L23) they pointed out in the *Current problems are* section that their online manuals are poor. Personally w3m saved me a couple of times when I had limited bandwidth or I didn't have enough money to by mobile data. And when I started reading the source code and looking online, there were a couple of things that I wished I knew when I needed them. That's why I'm creating this document.
 ## Installation
 ### Via the package manager
 Since this fork isn't official, here we'll be listing the ways you can install the official [w3m](https://github.com/tats/w3m) repository.  
@@ -29,7 +29,7 @@ sudo apt install w3m
 sudo pacman -S w3m
 ```
 ### Compile from source
-If you want to compile from source you should first install the [dependencies](/doc/README.md#dependencies). along with `make`
+If you want to compile from source you should first install the [dependencies](https://github.com/medanisjbara/w3m-expantions#dependencies). along with `make`
 ```
 git clone https://github.com/tats/w3m
 cd w3m
@@ -45,7 +45,7 @@ w3m is a pager and an HTTP browser, meaning it can open files and URLs.
 usage: w3m [options] [URL or filename]
 ```
 to get general information on how to use w3m, read the man page `man w3m` or the output of `w3m --help`.
-You can also have a look at the [old documentation](/doc/doc-old/MANUAL.html) for more information
+You can also have a look at the [old documentation](https://github.com/tats/w3m/blob/master/doc/MANUAL.html) for more information
 
 ## Tips and tricks
 ### Terminal emulators
@@ -79,7 +79,7 @@ keymap ml EXTERN_LINK "(mpv --player-operation-mode=pseudo-gui --no-terminal --y
 ...
 ```
 
-You can add as many keymaps as you need, Not only for external video players like mpv. But also to other types of external interpretations of a link. See the [old manual](/doc/doc-old/MANUAL.html) for more details.
+You can add as many keymaps as you need, Not only for external video players like mpv. But also to other types of external interpretations of a link. See the [old manual](https://github.com/tats/w3m/blob/master/doc/MANUAL.html) for more details.
 
 ## Troubleshooting
 ### GC Memory allocation Warning
@@ -94,7 +94,7 @@ add this to your `~/.bashrc`
 export GC_LARGE_ALLOC_WARN_INTERVAL=30000
 ```
 ## Useful sources
-* [The old documentation](/doc/doc-old/MANUAL.html)
-* [The old FAQ](/doc/doc-old/FAQ.html)
+* [The old documentation](https://github.com/tats/w3m/blob/master/doc/MANUAL.html)
+* [The old FAQ](https://github.com/tats/w3m/blob/master/doc/FAQ.html)
 * [Subreddit](reddit.com/r/w3m)
 * [W3M Rocks](http://w3m.rocks/) 
