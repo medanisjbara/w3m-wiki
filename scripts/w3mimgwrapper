@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# W3mimgdisplay path
+w3mimgdisplay=/usr/lib/w3m/w3mimgdisplay
+
+# Run as a display server
+if [ "$1" = "-server" ] ; then
+	test ! -f ~/.w3m/w3mimgcode && touch ~/.w3m/w3mimgcode
+	while true; do
+		# Feed the saved input to w3mimgdisplay
+		$w3mimgdisplay < ~/.w3m/w3mimgcode > /dev/null
+		sleep 0.1
+	done
+# Initialize and give w3m the output it needs
+elif [ "$1" = "-test" ] ; then
+	$0 -server &
+	# Outputs the size of the current terminal
+	$w3mimgdisplay -test
+else
+	# Gather input from w3m without blocking.
+	while true; do
+		# Read with timeout
+		IFS= read -r -t 0.1 -s holder && LINE="$holder"
+		INPUT_BUFFER="${INPUT}\n${LINE}"
+		INPUT="$INPUT_BUFFER"
+		if [ "$LINE" = "4;" ] ; then
+			break
+		fi
+	done
+	# Save the input to be executed by `$0 -server`
+	echo -e "$INPUT" > ~/.w3m/w3mimgcode 
+fi
+

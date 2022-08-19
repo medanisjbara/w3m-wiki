@@ -68,6 +68,10 @@ OOTB: Out Of The Box
 * Alacritty: needs w3mimgscript
 * Kitty: works with kitty display method.
 * qterminal: broken
+### W3mimgwrapper
+`w3mimgwrapper` is a script that works as a wrapper around `w3mimgdisplay` and executes it correctly in a loop. Effectively making the rendering process consistant on most terminals where the double buffers overwrite what `w3mimgdisplay` draws.  
+You can copy [the script](/scripts/w3mimgwrapper) to `/usr/lib/w3m/w3mimgwrapper` (or any name) and then make it executable. And then edit the option `External command to display image` from `w3mimgdisplay` to `w3mimgwrapper` in the Options menue. Or just replace `imgdisplay w3mimgdisplay` with `imgdisplay w3mimgwrapper` in your `~/w3m/config`. After that you can use `w3m` normally and see the results.  
+If you still experience some flickering you can remove the `sleep 0.1` which will make it run much faster.  
 ### Open homepage when no arguments are supplied
 In case of no arguments, w3m will look for the `HTTP_HOME` environment variable, If `HTTP_HOME` is not set, w3m will display the help message.
 In some cases, It could be helpful to add this to your `~/.bashrc`
