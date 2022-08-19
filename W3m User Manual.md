@@ -67,12 +67,12 @@ OOTB: Out Of The Box
 * mlterm: OOTB (don't use mlterm display method, w3mimgdisplay just works).
 * mrxvt: OOTB
 * rxvt-unicode: OOTB (once page is loaded, you will need to move the cursor for images to show. But they do stay visible use w3amimgwrapper to fix that)
-* st: ether by applying a[patch](https://st.suckless.org/patches/w3m/) or by using w3mimgwrapper script.
+* st: ether by applying a [patch](https://st.suckless.org/patches/w3m/) or by using w3mimgwrapper script.
 * Alacritty: needs w3mimgscript
 * Kitty: works with kitty display method.
 * qterminal: broken
 ### W3mimgwrapper
-`w3mimgwrapper` is a script that works as a wrapper around `w3mimgdisplay` and executes it correctly in a loop. Effectively making the rendering process consistant on most terminals where the double buffers overwrite what `w3mimgdisplay` draws.  
+`w3mimgwrapper` is a script that works as a wrapper around `w3mimgdisplay` and executes it correctly in a loop. Effectively making the rendering process consistant on most terminals where the double buffers overwrite what `w3mimgdisplay` draws. Check [w3m images](#w3m-images) for more information.  
 You can copy [the script](/scripts/w3mimgwrapper) to `/usr/lib/w3m/w3mimgwrapper` (or any name) and then make it executable. And then edit the option `External command to display image` from `w3mimgdisplay` to `w3mimgwrapper` in the Options menue. Or just replace `imgdisplay w3mimgdisplay` with `imgdisplay w3mimgwrapper` in your `~/w3m/config`. After that you can use `w3m` normally and see the results.  
 If you still experience some flickering you can remove the `sleep 0.1` which will make it run much faster.  
 **Known issues**  
