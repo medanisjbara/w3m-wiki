@@ -48,9 +48,26 @@ to get general information on how to use w3m, read the man page `man w3m` or the
 You can also have a look at the [old documentation](https://github.com/tats/w3m/blob/master/doc/MANUAL.html) for more information
 
 ## Tips and tricks
+### W3m Images
+If you see the word `image` in the output of `w3m -version`. This means that your version of w3m can infact display images. But not all terminals are able to display images properly. In order to get a gasp of what to do in this regard, continue reading this section and the [terminal emulators](#terminal-emulators) section.  
+w3m has 5 methods of displaying images. Most of which do not work due to poor maintainance (even mlterm option doesn't work on `mlterm` terminal emulator for example, while the iTerm2 method is almost identical in most case to the default w3mimgdisplay (external)). But testing things out is always a good option, it might make images look better on your terminal (we haven't tested everything).  
+You can choose which one to use in front of `Inline image display method` in the Opitons menue (press `o`). Don't forget to press the `[OK]` button or changes won't be saved. Restart w3m and check if the method of your choice is working. More on this in the next section.  
+The default option is to use an external command, by default it is the `w3mimgdisplay` (located under `/usr/lib/w3m`)  
+On some terminal emulators `w3mimgdisplay` displays the image for a split second before it vainshes. This is due to the fact that `w3mimgdisplay` draws the image on the front buffer. most terminals use double buffering, and having the back buffer overwrite the front buffer just deletes your image on frame after it has been drawn.  
+The workarounds in this regard aren't really much. In st terminal, there's a [patch](https://st.suckless.org/patches/w3m/) that fixes this by copying the front buffer to the back buffer before drawing on it. Another good option developped by the writer of this manual is to use a wrapper around `w3mimgdisplay` to rewrite the image in a loop.  
 ### Terminal emulators
 *This section needs more information*  
-According to [this thread](https://www.reddit.com/r/w3m/comments/pwwizm/which_terminal_emulator_are_you_using_with_w3m/) w3m image rendering is the most stable on Xterm, And [st](https://wiki.archlinux.org/title/St) (Only in the case of applying a [patch](https://st.suckless.org/patches/w3m/)
+The best terminal emulator for using with w3m is Xterm. But other terminal emulators can be used. In fact, it is almost taken for granted that w3m will work on every terminal emulator out there. Images on the other hand aren't a garentee. So we created a database of terminals that give a good experience when used with w3m.  
+OOTB: Out Of The Box
+* TTY: OOTB
+* Xterm: OOTB
+* mlterm: OOTB (don't use mlterm display method, w3mimgdisplay just works).
+* mrxvt: OOTB
+* rxvt-unicode: OOTB (once page is loaded, you will need to move the cursor for images to show. But they do stay visible use w3amimgwrapper to fix that)
+* st: ether by applying a[patch](https://st.suckless.org/patches/w3m/) or by using w3mimgwrapper script.
+* Alacritty: needs w3mimgscript
+* Kitty: works with kitty display method.
+* qterminal: broken
 ### Open homepage when no arguments are supplied
 In case of no arguments, w3m will look for the `HTTP_HOME` environment variable, If `HTTP_HOME` is not set, w3m will display the help message.
 In some cases, It could be helpful to add this to your `~/.bashrc`
