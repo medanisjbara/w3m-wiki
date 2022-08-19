@@ -46,6 +46,9 @@ usage: w3m [options] [URL or filename]
 ```
 to get general information on how to use w3m, read the man page `man w3m` or the output of `w3m --help`.
 You can also have a look at the [old documentation](https://github.com/tats/w3m/blob/master/doc/MANUAL.html) for more information
+### Bookmarks
+You can add current page to bookmarks by pressing `ESC a`.
+You can go to the bookmarks page ether by passing `-B` flag. Or by pressing `ESC b`.
 
 ## Tips and tricks
 ### W3m Images
@@ -72,6 +75,8 @@ OOTB: Out Of The Box
 `w3mimgwrapper` is a script that works as a wrapper around `w3mimgdisplay` and executes it correctly in a loop. Effectively making the rendering process consistant on most terminals where the double buffers overwrite what `w3mimgdisplay` draws.  
 You can copy [the script](/scripts/w3mimgwrapper) to `/usr/lib/w3m/w3mimgwrapper` (or any name) and then make it executable. And then edit the option `External command to display image` from `w3mimgdisplay` to `w3mimgwrapper` in the Options menue. Or just replace `imgdisplay w3mimgdisplay` with `imgdisplay w3mimgwrapper` in your `~/w3m/config`. After that you can use `w3m` normally and see the results.  
 If you still experience some flickering you can remove the `sleep 0.1` which will make it run much faster.  
+**Known issues**  
+* Server daemon doesn't stop automatically when w3m exists (user needs to `pkill w3mimgwrapper` manually).
 ### Open homepage when no arguments are supplied
 In case of no arguments, w3m will look for the `HTTP_HOME` environment variable, If `HTTP_HOME` is not set, w3m will display the help message.
 In some cases, It could be helpful to add this to your `~/.bashrc`
