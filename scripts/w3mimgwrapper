@@ -7,6 +7,11 @@ w3mimgdisplay=/usr/lib/w3m/w3mimgdisplay
 if [ "$1" = "-server" ] ; then
 	test ! -f ~/.w3m/w3mimgcode && touch ~/.w3m/w3mimgcode
 	while true; do
+		# Kill if w3m stops
+		# TODO: investigate why `if pidof w3m` works in shell but not inside this script
+		if [ -z "$(pidof w3m)" ] ; then
+			exit
+		fi
 		# Feed the saved input to w3mimgdisplay
 		$w3mimgdisplay < ~/.w3m/w3mimgcode > /dev/null
 		sleep 0.1
