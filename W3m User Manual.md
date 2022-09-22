@@ -72,8 +72,14 @@ OOTB: Out Of The Box
 * Kitty: works with kitty display method.
 * qterminal: broken
 ### W3mimgwrapper
-`w3mimgwrapper` is a script that works as a wrapper around `w3mimgdisplay` and executes it correctly in a loop. Effectively making the rendering process consistant on most terminals where the double buffers overwrite what `w3mimgdisplay` draws. Check [w3m images](#w3m-images) for more information. Another advantage of using the wrapper is not having to worry about the [memory leak that ranger developers have pointed out](https://github.com/ranger/ranger/blob/master/ranger/ext/img_display.py#L201).  
-You can copy [the script](/scripts/w3mimgwrapper) to `/usr/lib/w3m/w3mimgwrapper` (or any name) and then make it executable. And then edit the option `External command to display image` from `w3mimgdisplay` to `w3mimgwrapper` in the Options menue. Or just replace `imgdisplay w3mimgdisplay` with `imgdisplay w3mimgwrapper` in your `~/w3m/config`. After that you can use `w3m` normally and see the results.  
+`w3mimgwrapper` is a script that works as a wrapper around `w3mimgdisplay` and executes it correctly in a loop. Effectively making the rendering process consistant on most terminals where the double buffers overwrite what `w3mimgdisplay` draws. Check [w3m images](#w3m-images) for more information. Another advantage of using the wrapper is not having to worry about the [memory leak that ranger developers have pointed out](https://github.com/ranger/ranger/blob/master/ranger/ext/img_display.py#L201).
+How to setup:
+* Copy [the script](/scripts/w3mimgwrapper) to `/usr/lib/w3m/w3mimgwrapper` (or any name) and then make it executable.
+* You may need to edit the path to `w3mimgdisplay` at the beggining of the script.
+* Open `w3m` and press `o` to go to the options
+* Change `External command to display image` from `w3mimgdisplay` to `w3mimgwrapper` in the Options menue. Or just replace `imgdisplay w3mimgdisplay` with `imgdisplay w3mimgwrapper` in your `~/w3m/config`.
+
+After that you can use `w3m` normally and see the results.  
 If you still experience some flickering you can remove the `sleep 0.1` which will make it run much faster.  
 **Known issues**  
 * Bad behavior when multiple instances of w3m are executed at the same time.
