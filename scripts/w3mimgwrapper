@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# W3mimgdisplay path
-w3mimgdisplay=/usr/lib/w3m/w3mimgdisplay
+# W3mimgdisplay path (on some systems, this can be different
+w3mimgdisplay=/usr/libexec/w3m/w3mimgdisplay
 
 # Run as a display server
 if [ "$1" = "-server" ] ; then
@@ -18,9 +18,14 @@ if [ "$1" = "-server" ] ; then
 	done
 # Initialize and give w3m the output it needs
 elif [ "$1" = "-test" ] ; then
-	$0 -server &
 	# Outputs the size of the current terminal
-	$w3mimgdisplay -test
+	if $w3mimgdisplay -test ; then
+    # start the wrapper in the background to continuesly display images when needed
+    $0 -server &
+  else
+    # exit with non zero status
+    exit 1
+  fi
 else
 	# Gather input from w3m without blocking.
 	while true; do
